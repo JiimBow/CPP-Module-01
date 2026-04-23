@@ -6,13 +6,14 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:34:45 by jodone            #+#    #+#             */
-/*   Updated: 2026/04/23 18:08:05 by jodone           ###   ########.fr       */
+/*   Updated: 2026/04/23 18:07:34 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 #include <iostream>
 #include <string>
+#include <map>
 
 Harl::Harl()
 {
@@ -54,29 +55,27 @@ void	Harl::error()
 
 void	Harl::complain(std::string level)
 {
-	typedef	void (Harl::*TableFunc)();
+	std::map<std::string, int> levels;
+	levels["DEBUG"] = 1;
+	levels["INFO"] = 2;
+	levels["WARNING"] = 3;
+	levels["ERROR"] = 4;
 	
-	struct 
+	switch (levels[level])
 	{
-		std::string name;
-		TableFunc FuncPtr;
+	case 1:
+		this->debug();
+		std::cout << std::endl;
+	case 2:
+		this->info();
+		std::cout << std::endl;
+	case 3:
+		this->warning();
+		std::cout << std::endl;
+	case 4:
+		this->error();
+		break;
+	default: std::cout << "Harl complains a lot, but that's incomprehensible\n";
+		break;
 	}
-	table[] =
-	{
-		{"DEBUG", &Harl::debug},
-		{"INFO", &Harl::info},
-		{"WARNING",&Harl::warning},
-		{"ERROR", &Harl::error}
-	};
-
-	for (int i = 0; i < 4; i++)
-	{
-		if (table[i].name == level)
-		{
-			(this->*table[i].FuncPtr)();
-			return ;
-		}
-	}
-	
-	std::cout << "Harl complains a lot, but that's incomprehensible\n";
 }

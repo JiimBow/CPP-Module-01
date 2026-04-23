@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/23 09:34:37 by jodone            #+#    #+#             */
-/*   Updated: 2026/04/23 17:40:49 by jodone           ###   ########.fr       */
+/*   Created: 2026/04/23 09:34:51 by jodone            #+#    #+#             */
+/*   Updated: 2026/04/23 09:52:23 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
-#include <iostream>
+#pragma once
 #include <string>
 
-int	main(int ac, char** av)
+class Harl
 {
-	if (ac == 1)
-	{
-		std::cout << "You need to give one argument to Harl, he has to COMPLAIN !\n";
-		return 1;
-	}
-	if (ac > 2)
-	{
-		std::cout << "Harl got too much argument for complain\n";
-		return 1;
-	}
+private:
+	void	debug(void);
+	void	info(void);
+	void	warning(void);
+	void	error(void);
+public:
+	Harl();
+	~Harl();
+	void	complain(std::string level);
+};
 
-	Harl harlington;
-	std::string	level = av[1];
-	
-	harlington.complain(level);
-}
+
