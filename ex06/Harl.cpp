@@ -6,14 +6,13 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:34:45 by jodone            #+#    #+#             */
-/*   Updated: 2026/04/23 18:07:34 by jodone           ###   ########.fr       */
+/*   Updated: 2026/05/04 14:41:53 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 #include <iostream>
 #include <string>
-#include <map>
 
 Harl::Harl()
 {
@@ -42,8 +41,8 @@ void	Harl::info()
 void	Harl::warning()
 {
 	std::cout	<< "[ WARNING ]\n"
-				<< "I think I deserve to have some extra bacon for free."
-				<< " I've been coming for years, whereas you started\n"
+				<< "I think I deserve to have some extra bacon for free.\n"
+				<< "I've been coming for years, whereas you started "
 				<< "working here just last month.\n";
 }
 
@@ -55,13 +54,27 @@ void	Harl::error()
 
 void	Harl::complain(std::string level)
 {
-	std::map<std::string, int> levels;
-	levels["DEBUG"] = 1;
-	levels["INFO"] = 2;
-	levels["WARNING"] = 3;
-	levels["ERROR"] = 4;
-	
-	switch (levels[level])
+	struct
+	{
+		std::string name;
+		int			nb;
+	}
+	table[] =
+	{
+		{"DEBUG", 1},
+		{"INFO", 2},
+		{"WARNING", 3},
+		{"ERROR", 4},
+		{"DEFAULT", 5}
+	};
+
+	int	i = 0;
+	for (i = 0; i < 4; i++)
+	{
+		if (table[i].name == level)
+			break;
+	}
+	switch (table[i].nb)
 	{
 	case 1:
 		this->debug();
@@ -75,7 +88,7 @@ void	Harl::complain(std::string level)
 	case 4:
 		this->error();
 		break;
-	default: std::cout << "Harl complains a lot, but that's incomprehensible\n";
+	default: std::cout << "Harl complains a lot, but that's incomprehensible" << std::endl;
 		break;
 	}
 }

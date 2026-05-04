@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/23 09:34:45 by jodone            #+#    #+#             */
-/*   Updated: 2026/04/23 18:08:05 by jodone           ###   ########.fr       */
+/*   Updated: 2026/05/04 14:42:41 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	Harl::info()
 void	Harl::warning()
 {
 	std::cout	<< "[ WARNING ]\n"
-				<< "I think I deserve to have some extra bacon for free."
-				<< " I've been coming for years, whereas you started\n"
+				<< "I think I deserve to have some extra bacon for free.\n"
+				<< "I've been coming for years, whereas you started "
 				<< "working here just last month.\n";
 }
 
@@ -78,5 +78,5 @@ void	Harl::complain(std::string level)
 		}
 	}
 	
-	std::cout << "Harl complains a lot, but that's incomprehensible\n";
+	std::cout << "Harl complains a lot, but that's incomprehensible" << std::endl;
 }
