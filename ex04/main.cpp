@@ -6,7 +6,7 @@
 /*   By: jodone <jodone@student.42angouleme.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/22 16:44:02 by jodone            #+#    #+#             */
-/*   Updated: 2026/05/04 14:13:22 by jodone           ###   ########.fr       */
+/*   Updated: 2026/05/04 14:59:19 by jodone           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,11 @@ void	lineCopyReplace(const std::string s1, const std::string s2, std::string* li
 	
 	size_t iterator = 0;
 	
-	if (s1 == s2 || s1 == "")
-		return ;
-
-	while ((iterator = line->find(s1)) != std::string::npos)
+	while ((iterator = line->find(s1)) != std::string::npos && s1 != "")
 	{
 		line->erase(iterator, s1.length());
 		line->insert(iterator, s2);
-		iterator += s2.length();
+		line += s2.length();
 	}
 }
 
